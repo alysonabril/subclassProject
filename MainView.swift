@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol MainViewDelegate: AnyObject {
+    func seguePressed()
+}
+
+
 class MainView: UIView {
+    
+    weak var delegate: MainViewDelegate?
 
     lazy var textField: UITextField = {
         let tf = UITextField()
@@ -21,12 +28,12 @@ class MainView: UIView {
         let button = UIButton()
         button.backgroundColor = .black
         button.setTitle("Click Here", for: .normal)
-        button.addTarget(self, action: #selector(saveTheThing), for: .touchUpInside)
+        button.addTarget(self, action: #selector(segue), for: .touchUpInside)
         return button
     }()
     
-    @objc func saveTheThing() {
-        // self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    @objc func segue() {
+        delegate?.seguePressed()
     }
     
     override init(frame: CGRect) {
