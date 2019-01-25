@@ -17,9 +17,22 @@ class MainView: UIView {
         return tf
     }()
     
+    lazy var myButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setTitle("Click Here", for: .normal)
+        button.addTarget(self, action: #selector(saveTheThing), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func saveTheThing() {
+        // self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         addSubview(textField)
+        addSubview(myButton)
         setContraints()
     }
     
@@ -33,6 +46,11 @@ class MainView: UIView {
         textField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45).isActive = true
         textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 45).isActive = true
+        
+        myButton.translatesAutoresizingMaskIntoConstraints = false
+        myButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 25).isActive = true
+        myButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 175).isActive = true
+        
     }
     
 }
