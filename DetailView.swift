@@ -15,7 +15,7 @@ class DetailView: UIView {
         label.backgroundColor = .white
         label.font = UIFont(name: "noteworthy", size: 20)
         label.textColor = .blue
-        label.text = "words go here"
+        label.text = ""
         label.textAlignment = .center
         
         return label
